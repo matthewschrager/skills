@@ -7,6 +7,17 @@ Use it before implementation when you want the agent to read the project,
 challenge unresolved decisions, capture durable choices, and finish with clear
 acceptance criteria.
 
+## Quick Example
+
+```text
+Use /grill-to-goal to plan out my feature, focusing on the data model, user
+workflow, and rollout risks.
+```
+
+The skill should ground itself in the project, ask sharper questions with
+recommended answers, and produce a plan with scope, milestones, verification
+commands, and acceptance criteria.
+
 ## Install
 
 Clone the repo:
@@ -72,13 +83,6 @@ Ask your agent to use the skill before it starts building:
 ```text
 Use grill-to-goal to stress-test this feature idea and turn it into an
 implementation-ready plan.
-```
-
-More specific prompts work well:
-
-```text
-Use grill-to-goal to plan saved searches for our issue tracker. Read the repo
-first, ask only unresolved design questions, and stop before implementation.
 ```
 
 The skill should produce a plan, not code. A good result includes:
