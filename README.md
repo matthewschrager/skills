@@ -1,7 +1,8 @@
 # Grill To Goal
 
-`grill-to-goal` is an agent skill, inspired by Matt Pocock's agent skills, for
-turning a vague product or engineering idea into an implementation-ready plan.
+`grill-to-goal` is an agent skill, inspired by
+[Matt Pocock's agent skills](https://github.com/mattpocock/skills), for turning
+a vague product or engineering idea into an implementation-ready plan.
 
 Use it before implementation when you want the agent to read the project,
 challenge unresolved decisions, capture durable choices, and finish with clear
