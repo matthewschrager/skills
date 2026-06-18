@@ -46,22 +46,43 @@ scripts/
 
 Clone this repository, then run the local installer.
 
-For Codex-style local skills:
+For Claude local skills:
+
+```sh
+scripts/install.sh --target claude
+```
+
+For Codex local skills:
 
 ```sh
 scripts/install.sh --target codex
 ```
 
-For Claude-style local skills:
+For Cursor local skills:
+
+```sh
+scripts/install.sh --target cursor
+```
+
+For shared `.agents` local skills:
 
 ```sh
 scripts/install.sh --target agents
 ```
 
-Install to both:
+Named targets install to:
+
+| Target | Directory |
+| --- | --- |
+| `claude` | `$HOME/.claude/skills` |
+| `codex` | `$HOME/.codex/skills` |
+| `cursor` | `$HOME/.cursor/skills-cursor` |
+| `agents` | `$HOME/.agents/skills` |
+
+Install to multiple targets:
 
 ```sh
-scripts/install.sh --target codex --target agents
+scripts/install.sh --target claude,codex,cursor
 ```
 
 Install to a custom skills directory:
@@ -80,9 +101,9 @@ The installer writes only the `grill-to-goal` skill directory plus a generated
 Useful installer options:
 
 ```sh
-scripts/install.sh --target codex --dry-run
-scripts/install.sh --target codex --force
-scripts/install.sh --target codex --no-prompts
+scripts/install.sh --target claude --dry-run
+scripts/install.sh --target claude --force
+scripts/install.sh --target claude --no-prompts
 ```
 
 By default, the installer may offer to install Matt Pocock's companion skills

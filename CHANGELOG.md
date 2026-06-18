@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added named installer targets for Claude and Cursor local skill directories.
+- Clarified that `.agents` is the shared local skills target.
+
 ## 0.1.0
 
 - Initial public release of `grill-to-goal`.

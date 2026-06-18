@@ -14,11 +14,12 @@ dest_labels=()
 usage() {
   cat <<'USAGE'
 Usage:
-  scripts/install.sh --target codex [--target agents] [--target-dir PATH]
-  scripts/install.sh --target codex,agents
+  scripts/install.sh --target claude [--target codex] [--target-dir PATH]
+  scripts/install.sh --target claude,codex,cursor
 
 Options:
-  --target NAME       Install to a named target. Supported: codex, agents.
+  --target NAME       Install to a named target. Supported: agents, claude,
+                      codex, cursor.
                       Can be repeated or comma-separated.
   --target-dir PATH   Install to custom parent skills directory PATH.
   --force             Replace existing grill-to-goal install directories.
@@ -84,7 +85,7 @@ add_target() {
 
   for part in "${parts[@]}"; do
     case "$part" in
-      codex|agents)
+      agents|claude|codex|cursor)
         targets+=("$part")
         ;;
       '')
@@ -163,13 +164,21 @@ done
 if [[ ${#targets[@]} -gt 0 ]]; then
   for target in "${targets[@]}"; do
     case "$target" in
+      agents)
+        dest_parents+=("$HOME/.agents/skills")
+        dest_labels+=("agents")
+        ;;
+      claude)
+        dest_parents+=("$HOME/.claude/skills")
+        dest_labels+=("claude")
+        ;;
       codex)
         dest_parents+=("$HOME/.codex/skills")
         dest_labels+=("codex")
         ;;
-      agents)
-        dest_parents+=("$HOME/.agents/skills")
-        dest_labels+=("agents")
+      cursor)
+        dest_parents+=("$HOME/.cursor/skills-cursor")
+        dest_labels+=("cursor")
         ;;
     esac
   done

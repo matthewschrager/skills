@@ -117,6 +117,19 @@ if [[ $status -eq 0 ]]; then
   pass "vendor provenance metadata is valid"
 fi
 
+if [[ -x "scripts/install.sh" ]]; then
+  install_targets=(agents claude codex cursor)
+  for target in "${install_targets[@]}"; do
+    if ! scripts/install.sh --target "$target" --force --dry-run --no-prompts >/dev/null; then
+      fail "installer dry run failed for target: $target"
+    fi
+  done
+
+  if [[ $status -eq 0 ]]; then
+    pass "installer named targets are valid"
+  fi
+fi
+
 while IFS= read -r file; do
   lines="$(wc -l < "$file" | tr -d ' ')"
   if [[ "$lines" -gt 600 ]]; then
@@ -136,7 +149,7 @@ leak_targets=(
   "scripts"
 )
 
-if grep -RInE '(/Users/|chief_of_staff|Nessie|gstack|\.claude)' "${leak_targets[@]}" 2>/dev/null \
+if grep -RInE '(/Users/|chief_of_staff|Nessie|gstack)' "${leak_targets[@]}" 2>/dev/null \
   | grep -v '^scripts/validate.sh:' >/tmp/grill-to-goal-leaks.txt; then
   cat /tmp/grill-to-goal-leaks.txt >&2
   fail "possible private path or workflow leakage"
