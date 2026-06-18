@@ -97,4 +97,7 @@ Before finishing:
 - verify the plan has all required sections;
 - summarize created or updated files;
 - state that implementation has not started unless the user asked for it;
+- provide a copy/pasteable `/goal` prompt that tells an implementation agent to
+  read the plan, stay within scope, run the listed verification, and stop on
+  blockers;
 - list open questions only when they block execution.
