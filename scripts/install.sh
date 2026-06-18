@@ -281,7 +281,7 @@ if [[ -f "$HOME/.agents/skills/grill-with-docs/SKILL.md" ]] ||
 fi
 
 if [[ $mattpocock_installed -eq 1 ]]; then
-  info "Matt Pocock skills detected. grill-to-goal will prefer them for glossary and ADR capture."
+  info "Matt Pocock skills detected. grill-to-goal will prefer them for the grilling workflow, glossary, and ADR capture."
   exit 0
 fi
 
@@ -289,10 +289,10 @@ install_mattpocock=0
 if [[ $yes -eq 1 ]]; then
   install_mattpocock=1
 elif [[ $no_prompts -eq 1 ]]; then
-  info "Matt Pocock's domain-modeling/grill-with-docs skills are preferred for glossary and ADR capture."
+  info "Matt Pocock's grill-with-docs/domain-modeling skills are preferred for the grilling workflow, glossary, and ADR capture."
   info "Install them later with: npx skills@latest add mattpocock/skills"
 else
-  printf 'Matt Pocock skills are preferred for glossary and ADR capture.\n'
+  printf 'Matt Pocock skills are preferred for the grilling workflow, glossary, and ADR capture.\n'
   printf 'Install them now with `npx skills@latest add mattpocock/skills`? [y/N] '
   read -r answer
   case "$answer" in

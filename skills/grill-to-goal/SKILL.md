@@ -5,35 +5,18 @@ description: Turns vague feature ideas into implementation-ready plans by readin
 
 # Grill To Goal
 
-## Quick Start
-
 Use this before implementation when the user wants a plan that has been tested
 against the actual project.
 
-1. Read local project instructions, docs, and relevant code before asking
-   questions.
-2. Separate confirmed facts, existing decisions, and unresolved design choices.
-3. Ask one unresolved design question at a time.
-4. Include a recommended answer with every question.
-5. Auto-answer questions whose answer is obvious, already decided, or
-   discoverable from the project.
-6. Capture durable decisions using installed domain-modeling guidance when
-   available, or the vendored fallback when needed.
-7. Distill the settled design into a self-contained implementation plan.
-
-## Domain Modeling Guidance
-
-If Matt Pocock's `domain-modeling` or `grill-with-docs` guidance is available
-in the current agent runtime, use it for `CONTEXT.md`, `CONTEXT-MAP.md`, and ADR
-capture.
-
-If that guidance is not available, use the vendored fallback in
-[mattpocock-domain-modeling](vendor/mattpocock-domain-modeling/README.md).
-
-Do not block the planning session just because preferred domain-modeling
-guidance is not installed.
+This skill turns a repo-grounded grilling/design session into an implementation
+handoff with confirmed project context, explicit scope and non-scope,
+implementation milestones, verification commands, and acceptance criteria.
 
 ## Workflow
+
+Use this workflow in all cases. When Matt Pocock's skills are installed, they
+provide the preferred mechanics for steps 2 and 3. The local guidance below is
+the standalone fallback and the handoff contract.
 
 ### 1. Ground The Session
 
@@ -45,6 +28,9 @@ guidance is not installed.
 Do not ask the user questions that the project can answer safely.
 
 ### 2. Grill The Design
+
+Prefer Matt Pocock's `grill-with-docs` or `grilling` mechanics here when they
+are installed. If unavailable, use this fallback:
 
 Walk the design tree one decision at a time.
 
@@ -65,9 +51,14 @@ When auto-answering a meaningful decision, say so and record it.
 
 ### 3. Capture Durable Decisions
 
+Prefer Matt Pocock's `domain-modeling` guidance here when it is installed. If
+unavailable, use the vendored domain-modeling fallback at
+[vendor/mattpocock-domain-modeling](vendor/mattpocock-domain-modeling/README.md).
+Do not block the planning session just because preferred companion guidance is
+not installed.
+
 Update documentation as decisions settle.
 
-- Follow the domain-modeling guidance above.
 - Add domain vocabulary to context docs only when the term matters to domain
   experts.
 - Create ADRs only for decisions that are hard to reverse, surprising without

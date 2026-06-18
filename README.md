@@ -97,13 +97,13 @@ The skill should produce a plan, not code. A good result includes:
 
 ## Preferred Companion Skills
 
-This skill is inspired by Matt Pocock's `domain-modeling` and
-`grill-with-docs` skills. When your agent runtime can use those skills, prefer
-installing them.
+This skill extends Matt Pocock's `grill-with-docs` workflow. When your agent
+runtime can use Matt Pocock's skills, prefer installing them.
 
-When Matt Pocock's `domain-modeling` or `grill-with-docs` guidance is installed,
-the skill uses it for context docs, glossary work, and ADR capture. Otherwise it
-uses the vendored fallback included in this repo so planning is not blocked.
+When installed, `grill-to-goal` uses `grill-with-docs` as the preferred session
+pattern and `domain-modeling` for context docs, glossary work, and ADR capture.
+Otherwise it follows its built-in workflow and uses the vendored
+domain-modeling fallback included in this repo so planning is not blocked.
 
 Install the preferred skills with:
 
