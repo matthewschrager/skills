@@ -2,8 +2,19 @@
 
 ## Unreleased
 
-- Added named installer targets for Claude and Cursor local skill directories.
-- Clarified that `.agents` is the shared local skills target.
+## 0.1.1 - 2026-06-18
+
+- Added named installer targets for Claude and Cursor local skill directories,
+  and clarified that `.agents` is the shared local skills target.
+- Refined README install, usage, and quick-example guidance, including a link to
+  Matt Pocock's skills repository.
+- Clarified how `grill-to-goal` uses Matt Pocock `grill-with-docs`, `grilling`,
+  and `domain-modeling` guidance when installed.
+- Added completion guidance to provide a copy/pasteable `/goal` implementation
+  prompt.
+- Removed `CONTRIBUTING.md` until contribution guidance is needed.
+- Updated validation to allow that removal and skip deleted tracked files during
+  pre-commit checks.
 
 ## 0.1.0
 

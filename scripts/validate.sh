@@ -19,7 +19,6 @@ pass() {
 required_files=(
   "README.md"
   "LICENSE"
-  "CONTRIBUTING.md"
   "CHANGELOG.md"
   ".gitignore"
   "scripts/install.sh"
@@ -131,6 +130,7 @@ if [[ -x "scripts/install.sh" ]]; then
 fi
 
 while IFS= read -r file; do
+  [[ -f "$file" ]] || continue
   lines="$(wc -l < "$file" | tr -d ' ')"
   if [[ "$lines" -gt 600 ]]; then
     fail "$file has $lines lines; keep files under 600 lines"
@@ -143,7 +143,6 @@ fi
 
 leak_targets=(
   "README.md"
-  "CONTRIBUTING.md"
   "CHANGELOG.md"
   "skills"
   "scripts"
@@ -160,6 +159,7 @@ if [[ $status -eq 0 ]]; then
 fi
 
 while IFS= read -r md_file; do
+  [[ -f "$md_file" ]] || continue
   while IFS= read -r link; do
     [[ -z "$link" ]] && continue
     [[ "$link" =~ ^https?:// ]] && continue
