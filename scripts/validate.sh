@@ -148,7 +148,36 @@ leak_targets=(
   "scripts"
 )
 
-if grep -RInE '(/Users/|chief_of_staff|Nessie|gstack)' "${leak_targets[@]}" 2>/dev/null \
+# Always scan for absolute user paths. Additional private project codenames are
+# kept out of this committed script: supply them via the GRILL_LEAKWORDS env var
+# (comma- or whitespace-separated) and/or a git-ignored .leakwords file (one term
+# per line). This keeps internal names out of the public repo.
+leak_pattern='/Users/'
+
+add_leak_word() {
+  local word="$1"
+  word="${word#"${word%%[![:space:]]*}"}"
+  word="${word%"${word##*[![:space:]]}"}"
+  [[ -z "$word" ]] && return
+  [[ "$word" == \#* ]] && return
+  leak_pattern+="|$word"
+}
+
+if [[ -n "${GRILL_LEAKWORDS:-}" ]]; then
+  IFS=', '
+  for word in $GRILL_LEAKWORDS; do
+    add_leak_word "$word"
+  done
+  unset IFS
+fi
+
+if [[ -f .leakwords ]]; then
+  while IFS= read -r word; do
+    add_leak_word "$word"
+  done < .leakwords
+fi
+
+if grep -RInE "($leak_pattern)" "${leak_targets[@]}" 2>/dev/null \
   | grep -v '^scripts/validate.sh:' >/tmp/grill-to-goal-leaks.txt; then
   cat /tmp/grill-to-goal-leaks.txt >&2
   fail "possible private path or workflow leakage"
